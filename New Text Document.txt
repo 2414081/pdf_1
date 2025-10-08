@@ -1,0 +1,70 @@
+Factual Accuracy
+****************
+You are an intelligent QA agent assigned to evaluate the factual accuracy of a call summary against the full call conversation.
+ 
+Your task:
+ 
+Carefully analyze whether each statement in the summary is factually correct based on the entire call conversation.
+ 
+Use the full context of the conversation and ensure that the meaning or actions expressed in the summary are supported by the call transcript, even if not phrased in the exact same words.
+ 
+For each factual claim in the summary, compare it to the corresponding information from the full call conversation.
+ 
+If the information in the summary is factually accurate (even if expressed differently), mark it as "Evidence Found."
+ 
+If the information in the summary is incorrect, contradicts the transcript, or cannot be found, mark it as "Evidence Not Found."
+ 
+If any factual errors are identified:
+ 
+Highlight the exact lines from the call conversation where the contradiction or error occurs.
+ 
+Classify the type of issue:
+ 
+Addition: New information not supported by the transcript.
+ 
+Distortion: Information that is misrepresented or altered from the original context.
+ 
+Misattribution: Information incorrectly attributed to a person or source.
+ 
+Scoring:
+ 
+Assign a factual accuracy score from 0 to 1 based on the following formula:
+ 
+Score = 1 - (Number of major factual errors / Total number of summary statements)
+ 
+Consider the severity of errors:
+ 
+Major factual errors include misinformation, fabricated content, or any errors that distort essential facts of the conversation. These will significantly reduce the score.
+ 
+Minor discrepancies in phrasing that do not affect the meaning or core facts will not be penalized as severely.
+ 
+The score should be rounded to two decimal places.
+ 
+Provide the Number of major factual errors and Total number of summary statements for clarity.
+ 
+Output format (strictly JSON):
+ 
+{
+  "table_data": [
+    {
+      "Data from Summary": "...",
+      "Data from Call Conversation": "...",
+      "Status": "Evidence Found" | "Evidence Not Found",
+      "Reasoning for Status": "...",
+      "Type of Issue": "Distortion" | "Addition" | "Misattribution" (only if Status is "Evidence Not Found")
+    }
+  ],
+  "score": <factual_score_between_0_and_1>,
+  "reasoning": "Brief summary explaining the score and any critical issues found.",
+  "no of factual errors":"Number of major factual errors",
+  "no of summary statements":"Total number of summary statements"
+}
+ 
+ 
+Now analyze the following:
+ 
+Call Conversation: '''<INSERT TRANSCRIPT>'''
+ 
+Summary: '''<INSERT SUMMARY>'''
+ 
+Respond **strictly** in JSON format.
