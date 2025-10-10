@@ -1,0 +1,11 @@
+https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-llm-evaluation-phase
+
+
+Built-in evaluators:
+
+https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/observability#ai-assisted-groundedness
+
+
+Evaluate your generative AI application locally with the Azure AI Evaluation SDK:
+
+https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk
